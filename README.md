@@ -36,4 +36,4 @@ The same ChefVault::Item.load method will be called, but if a secret decryption 
   * e.g. `SecretDecryption exception raised; please refresh vault item (passwords/root)`
 2. Recipe execution will pause for 30 seconds
 3. The process will repeat
-  * It will repeat this 40 times by default (~20 minutes). This can be overwritten by passing a Fixnum as the `retries` argument of `ChefVaultRetry::Item.load`
+  * It will repeat this 40 times by default (~20 minutes). The number of retries can be customized by passing a Fixnum as the `retries` argument of `ChefVaultRetry::Item.load`
