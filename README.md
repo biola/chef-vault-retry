@@ -31,6 +31,7 @@ item['password']
 ```
 
 The same ChefVault::Item.load method will be called, but if a secret decryption exception is raised:
+
 1. A message will output about the failure
   * e.g. `SecretDecryption exception raised; please refresh vault item (passwords/root)`
 2. Recipe execution will pause for 30 seconds
