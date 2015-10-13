@@ -4,7 +4,7 @@ require 'chef-vault-retry/version'
 Gem::Specification.new do |s|
   s.name             = 'chef-vault-retry'
   s.version          = ChefVaultRetry::VERSION
-  s.authors          = ['Troy Ready']
+  s.authors          = ['Biola University']
   s.email            = ['sysadmins@biola.edu']
   s.summary          = 'Retry support for chef-vault'
   s.description      = s.summary
