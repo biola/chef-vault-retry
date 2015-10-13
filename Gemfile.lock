@@ -1,0 +1,19 @@
+PATH
+  remote: .
+  specs:
+    chef-vault-retry (0.1.0)
+      chef-vault (~> 2.6)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    chef-vault (2.6.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  chef-vault-retry!
+
+BUNDLED WITH
+   1.10.6
