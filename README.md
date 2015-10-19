@@ -37,3 +37,7 @@ The same ChefVault::Item.load method will be called, but if a secret decryption 
 2. Recipe execution will pause for 30 seconds
 3. The process will repeat
   * It will repeat this 40 times by default (~20 minutes). The number of retries can be customized by passing a Fixnum as the `retries` argument of `ChefVaultRetry::Item.load`
+
+## Databag Fallback
+
+This cookbook emulates the default `chef-vault` cookbook behaviour and falls back to normal data bag item loading if the item is not actually a Chef Vault item. This can be disabled by passing `databag_fallback=false` to `ChefVaultRetry::Item.load`.

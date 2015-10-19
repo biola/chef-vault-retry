@@ -20,20 +20,24 @@ require 'chef-vault'
 
 class ChefVaultRetry
   class Item
-
-    def self.load(v, i, retries=40)
-      retries.times do
-        begin
-          return ChefVault::Item.load(v, i)
-        rescue ChefVault::Exceptions::SecretDecryption
-          puts "SecretDecryption exception raised; "\
-               "please refresh vault item (#{v}/#{i})"
-          sleep 30
-          next
+    def self.load(v, i, retries = 40, databag_fallback = true)
+      if ChefVault::Item.vault?(v, i)
+        retries.times do
+          begin
+            return ChefVault::Item.load(v, i)
+          rescue ChefVault::Exceptions::SecretDecryption
+            puts 'SecretDecryption exception raised; '\
+                 "please refresh vault item (#{v}/#{i})"
+            sleep 30
+            next
+          end
         end
+        fail "Failed after #{retries} attempts to decrypt #{v}/#{i}"
+      elsif databag_fallback
+        Chef::DataBagItem.load(v, i)
+      else
+        fail "#{v}/#{i} vault item not found and databag_fallback not permitted"
       end
-      fail "Failed after #{retries} attempts to decrypt #{v}/#{i}"
     end
-
   end
 end
